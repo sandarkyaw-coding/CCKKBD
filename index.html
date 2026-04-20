@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <style>
+        :root {
+            --bg: #fcf4dd;
+            --red: #d63031;
+            --dark-red: #b32626;
+        }
+
+        body {
+            background-color: var(--bg);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        /* STEP 2: The Email Notification */
+        #notification {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            cursor: pointer;
+            border-left: 5px solid var(--red);
+        }
+
+        /* STEP 3: The Envelope */
+        #envelope-container {
+            display: none;
+            text-align: center;
+        }
+
+        .envelope {
+            width: 300px;
+            height: 200px;
+            background: var(--red);
+            position: relative;
+            margin: 20px auto;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 120px solid var(--dark-red);
+        }
+
+        .heart {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 30px;
+        }
+
+        /* STEP 4: The Final Wish */
+        #final-wish {
+            display: none;
+            background: white;
+            width: 90%;
+            max-width: 450px;
+            max-height: 85vh;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 12px;
+            margin: 15px 0;
+            background: #000;
+        }
+
+        .message-text {
+            color: #444;
+            line-height: 1.6;
+            font-size: 1.05rem;
+            white-space: pre-line; /* Keeps your spacing */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="notification" onclick="goToStep3()">
+        <p style="margin:0; font-size: 0.9rem; color: #888;">21/4/2026</p>
+        <h3 style="margin: 5px 0;">Hey Habe!</h3>
+        <p style="margin:0;">You have got a new email.</p>
+    </div>
+
+    <div id="envelope-container" onclick="goToStep4()">
+        <p style="color: #2d3436; font-weight: bold;">From: Cho Cho <br> To: Ko Ko</p>
+        <div class="envelope">
+            <div class="heart">❤</div>
+        </div>
+        <p style="color: #636e72;">Check out this awesome surprise for u!<br>(Click to see attachment)</p>
+    </div>
+
+    <div id="final-wish">
+        <h2 style="color: var(--red); margin-top: 0;">Happy Birthday! 🎂</h2>
+        
+        <video id="bdVideo" controls playsinline>
+            <source src="./cckk.MOV" type="video/quicktime">
+            <source src="./cckk.MOV" type="video/mp4">
+        </video>
+
+        <div class="message-text">
+            Wishing you a healthy, wealthy and happy life ahead with your family and your lovely thel thel nge nge😚.
+            
+            May every single one of your dreams come true and let’s celebrate many many more birthdays together KoKo. Love u always🫰🏻
+            
+            Happy birthday my love, I love you the most Koko 🩵
+        </div>
+        
+        <button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; border:none; background:#eee; border-radius:5px; cursor:pointer;">Back</button>
+    </div>
+
+    <script>
+        function goToStep3() {
+            document.getElementById('notification').style.display = 'none';
+            document.getElementById('envelope-container').style.display = 'block';
+        }
+
+        function goToStep4() {
+            document.getElementById('envelope-container').style.display = 'none';
+            const wish = document.getElementById('final-wish');
+            wish.style.display = 'block';
+            
+            // Auto-play video
+            const video = document.getElementById('bdVideo');
+            video.play();
+        }
+    </script>
+</body>
+</html>
